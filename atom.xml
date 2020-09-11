@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xgl6.github.io</id>
     <title>Gridea</title>
-    <updated>2020-09-11T09:18:47.751Z</updated>
+    <updated>2020-09-11T09:20:28.108Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xgl6.github.io"/>
     <link rel="self" href="https://xgl6.github.io/atom.xml"/>
@@ -22,6 +22,72 @@
 三四十<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">三</mi><mi mathvariant="normal">四</mi><mi mathvariant="normal">十</mi></mrow><annotation encoding="application/x-tex">三四十</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">三</span><span class="mord cjk_fallback">四</span><span class="mord cjk_fallback">十</span></span></span></span><br>
 啊啊啊$$ 三四十 $$<br>
 <s>aaa</s>三四十</p>
+<pre><code class="language-java">package com.ym.lims.utils;
+
+
+import cn.hutool.json.JSONUtil;
+import com.aliyuncs.CommonRequest;
+import com.aliyuncs.CommonResponse;
+import com.aliyuncs.DefaultAcsClient;
+import com.aliyuncs.IAcsClient;
+import com.aliyuncs.exceptions.ClientException;
+import com.aliyuncs.exceptions.ServerException;
+import com.aliyuncs.http.MethodType;
+import com.aliyuncs.profile.DefaultProfile;
+import com.google.common.collect.Maps;
+import com.ym.lims.config.SmsProperties;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.util.Map;
+
+/**
+ * @author xgl
+ * @create 2020-07-28 13:51
+ */
+@Component
+@Slf4j
+public class SmsUtils {
+    @Autowired
+    private SmsProperties prop;
+    /**
+     * 产品域名,开发者无需替换
+     */
+    static final String domain = &quot;dysmsapi.aliyuncs.com&quot;;
+
+
+    public CommonResponse sendSms(String phone, String code, String signName, String template){
+        DefaultProfile profile = DefaultProfile.getProfile(&quot;cn-hangzhou&quot;, prop.getAccessKeyId(), prop.getAccessKeySecret());
+        IAcsClient client = new DefaultAcsClient(profile);
+
+        CommonRequest request = new CommonRequest();
+        request.setSysMethod(MethodType.POST);
+        request.setSysDomain(domain);
+        request.setSysVersion(&quot;2017-05-25&quot;);
+        request.setSysAction(&quot;SendSms&quot;);
+        request.putQueryParameter(&quot;RegionId&quot;, &quot;cn-hangzhou&quot;);
+        request.putQueryParameter(&quot;PhoneNumbers&quot;, phone);
+        request.putQueryParameter(&quot;SignName&quot;, signName);
+        request.putQueryParameter(&quot;TemplateCode&quot;, template);
+        Map&lt;String,String&gt; map = Maps.newHashMapWithExpectedSize(6);
+        map.put(&quot;code&quot;,code);
+        String codeJson = JSONUtil.toJsonStr(map);
+        request.putQueryParameter(&quot;TemplateParam&quot;, codeJson);
+        CommonResponse response = null;
+        try {
+            response = client.getCommonResponse(request);
+            log.info(response.getData());
+        } catch (ServerException e) {
+            e.printStackTrace();
+        } catch (ClientException e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
+}
+
+</code></pre>
 ]]></content>
     </entry>
     <entry>
