@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xgl6.github.io</id>
     <title>Gridea</title>
-    <updated>2020-09-11T09:17:56.155Z</updated>
+    <updated>2020-09-11T09:18:47.751Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xgl6.github.io"/>
     <link rel="self" href="https://xgl6.github.io/atom.xml"/>
@@ -10,6 +10,20 @@
     <logo>https://xgl6.github.io/images/avatar.png</logo>
     <icon>https://xgl6.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Gridea</rights>
+    <entry>
+        <title type="html"><![CDATA[Java代码测试]]></title>
+        <id>https://xgl6.github.io/post/java-dai-ma-ce-shi/</id>
+        <link href="https://xgl6.github.io/post/java-dai-ma-ce-shi/">
+        </link>
+        <updated>2020-09-11T09:15:56.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="一级标题">一级标题</h1>
+<p><code>撒大赛阿萨的</code><br>
+<em>多对多</em><br>
+三四十<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">三</mi><mi mathvariant="normal">四</mi><mi mathvariant="normal">十</mi></mrow><annotation encoding="application/x-tex">三四十</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">三</span><span class="mord cjk_fallback">四</span><span class="mord cjk_fallback">十</span></span></span></span><br>
+啊啊啊$$ 三四十 $$<br>
+<s>aaa</s>三四十</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
         <id>https://xgl6.github.io/post/hello-gridea/</id>
