@@ -1,30 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://xgl6.gitee.io</id>
+    <id>https://xgl6.github.io</id>
     <title>Gridea</title>
-    <updated>2020-09-11T08:22:38.163Z</updated>
+    <updated>2020-09-11T09:06:10.007Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://xgl6.gitee.io"/>
-    <link rel="self" href="https://xgl6.gitee.io/atom.xml"/>
+    <link rel="alternate" href="https://xgl6.github.io"/>
+    <link rel="self" href="https://xgl6.github.io/atom.xml"/>
     <subtitle>温故而知新</subtitle>
-    <logo>https://xgl6.gitee.io/images/avatar.png</logo>
-    <icon>https://xgl6.gitee.io/favicon.ico</icon>
+    <logo>https://xgl6.github.io/images/avatar.png</logo>
+    <icon>https://xgl6.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, Gridea</rights>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://xgl6.gitee.io/post/hello-gridea/</id>
-        <link href="https://xgl6.gitee.io/post/hello-gridea/">
+        <id>https://xgl6.github.io/post/hello-gridea/</id>
+        <link href="https://xgl6.github.io/post/hello-gridea/">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
-        <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静<br>
-态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-]]></summary>
         <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
 ✍️  <strong>Gridea</strong> 一个静<br>
-态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
+态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...<br>
+<a href="https://github.com/getgridea/gridea">Github</a><br>
 <a href="https://gridea.dev/">Gridea 主页</a><br>
 <a href="http://fehey.com/">示例网站</a></p>
 <h2 id="特性">特性👇</h2>
