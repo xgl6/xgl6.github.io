@@ -1,94 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://xgl6.github.io</id>
-    <title>Gridea</title>
-    <updated>2020-09-11T09:20:28.108Z</updated>
+    <title>性感六</title>
+    <updated>2020-09-11T09:25:51.745Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://xgl6.github.io"/>
     <link rel="self" href="https://xgl6.github.io/atom.xml"/>
-    <subtitle>温故而知新</subtitle>
+    <subtitle>每一行代码都是改变世界的力量</subtitle>
     <logo>https://xgl6.github.io/images/avatar.png</logo>
     <icon>https://xgl6.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, Gridea</rights>
+    <rights>All rights reserved 2020, 性感六</rights>
     <entry>
         <title type="html"><![CDATA[Java代码测试]]></title>
         <id>https://xgl6.github.io/post/java-dai-ma-ce-shi/</id>
         <link href="https://xgl6.github.io/post/java-dai-ma-ce-shi/">
         </link>
         <updated>2020-09-11T09:15:56.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="一级标题">一级标题</h1>
-<p><code>撒大赛阿萨的</code><br>
-<em>多对多</em><br>
-三四十<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">三</mi><mi mathvariant="normal">四</mi><mi mathvariant="normal">十</mi></mrow><annotation encoding="application/x-tex">三四十</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">三</span><span class="mord cjk_fallback">四</span><span class="mord cjk_fallback">十</span></span></span></span><br>
-啊啊啊$$ 三四十 $$<br>
-<s>aaa</s>三四十</p>
-<pre><code class="language-java">package com.ym.lims.utils;
-
-
-import cn.hutool.json.JSONUtil;
-import com.aliyuncs.CommonRequest;
-import com.aliyuncs.CommonResponse;
-import com.aliyuncs.DefaultAcsClient;
-import com.aliyuncs.IAcsClient;
-import com.aliyuncs.exceptions.ClientException;
-import com.aliyuncs.exceptions.ServerException;
-import com.aliyuncs.http.MethodType;
-import com.aliyuncs.profile.DefaultProfile;
-import com.google.common.collect.Maps;
-import com.ym.lims.config.SmsProperties;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-
-import java.util.Map;
-
-/**
- * @author xgl
- * @create 2020-07-28 13:51
- */
-@Component
-@Slf4j
-public class SmsUtils {
-    @Autowired
-    private SmsProperties prop;
-    /**
-     * 产品域名,开发者无需替换
-     */
-    static final String domain = &quot;dysmsapi.aliyuncs.com&quot;;
-
-
-    public CommonResponse sendSms(String phone, String code, String signName, String template){
-        DefaultProfile profile = DefaultProfile.getProfile(&quot;cn-hangzhou&quot;, prop.getAccessKeyId(), prop.getAccessKeySecret());
-        IAcsClient client = new DefaultAcsClient(profile);
-
-        CommonRequest request = new CommonRequest();
-        request.setSysMethod(MethodType.POST);
-        request.setSysDomain(domain);
-        request.setSysVersion(&quot;2017-05-25&quot;);
-        request.setSysAction(&quot;SendSms&quot;);
-        request.putQueryParameter(&quot;RegionId&quot;, &quot;cn-hangzhou&quot;);
-        request.putQueryParameter(&quot;PhoneNumbers&quot;, phone);
-        request.putQueryParameter(&quot;SignName&quot;, signName);
-        request.putQueryParameter(&quot;TemplateCode&quot;, template);
-        Map&lt;String,String&gt; map = Maps.newHashMapWithExpectedSize(6);
-        map.put(&quot;code&quot;,code);
-        String codeJson = JSONUtil.toJsonStr(map);
-        request.putQueryParameter(&quot;TemplateParam&quot;, codeJson);
-        CommonResponse response = null;
-        try {
-            response = client.getCommonResponse(request);
-            log.info(response.getData());
-        } catch (ServerException e) {
-            e.printStackTrace();
-        } catch (ClientException e) {
-            e.printStackTrace();
-        }
-        return response;
-    }
-}
-
-</code></pre>
-]]></content>
     </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
@@ -96,27 +23,5 @@ public class SmsUtils {
         <link href="https://xgl6.github.io/post/hello-gridea/">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
-        <content type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静<br>
-态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...<br>
-<a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
-]]></content>
     </entry>
 </feed>
