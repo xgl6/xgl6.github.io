@@ -1,0 +1,263 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Java代码测试 | 性感六</title>
+<link rel="shortcut icon" href="https://xgl6.github.io/favicon.ico?v=1599869821740">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://xgl6.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Java代码测试 | 性感六 - Atom Feed" href="https://xgl6.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="一级标题
+撒大赛阿萨的
+多对多
+三四十三四十三四十三四十
+啊啊啊$$ 三四十 $$
+aaa三四十
+package com.ym.lims.utils;
+
+
+import cn.hutool.json.JSONUtil;
+import com..." />
+    <meta name="keywords" content="java" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://xgl6.github.io">
+  <img class="avatar" src="https://xgl6.github.io/images/avatar.png?v=1599869821740" alt="">
+  </a>
+  <h1 class="site-title">
+    性感六
+  </h1>
+  <p class="site-description">
+    每一行代码都是改变世界的力量
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://gitee.com/xgl6" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+        <a href="https://weibo.com/jicheng5201314" target="_blank">
+          <i class="ri-weibo-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Java代码测试
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-09-11
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+                <a href="https://xgl6.github.io/tag/XXzPKxnX6/" class="post-tag">
+                  # java
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://xgl6.github.io/post-images/java-c.gif" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h1 id="一级标题">一级标题</h1>
+<p><code>撒大赛阿萨的</code><br>
+<em>多对多</em><br>
+三四十<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">三</mi><mi mathvariant="normal">四</mi><mi mathvariant="normal">十</mi></mrow><annotation encoding="application/x-tex">三四十</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0em;vertical-align:0em;"></span><span class="mord cjk_fallback">三</span><span class="mord cjk_fallback">四</span><span class="mord cjk_fallback">十</span></span></span></span><br>
+啊啊啊$$ 三四十 $$<br>
+<s>aaa</s>三四十</p>
+<pre><code class="language-java">package com.ym.lims.utils;
+
+
+import cn.hutool.json.JSONUtil;
+import com.aliyuncs.CommonRequest;
+import com.aliyuncs.CommonResponse;
+import com.aliyuncs.DefaultAcsClient;
+import com.aliyuncs.IAcsClient;
+import com.aliyuncs.exceptions.ClientException;
+import com.aliyuncs.exceptions.ServerException;
+import com.aliyuncs.http.MethodType;
+import com.aliyuncs.profile.DefaultProfile;
+import com.google.common.collect.Maps;
+import com.ym.lims.config.SmsProperties;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import java.util.Map;
+
+/**
+ * @author xgl
+ * @create 2020-07-28 13:51
+ */
+@Component
+@Slf4j
+public class SmsUtils {
+    @Autowired
+    private SmsProperties prop;
+    /**
+     * 产品域名,开发者无需替换
+     */
+    static final String domain = &quot;dysmsapi.aliyuncs.com&quot;;
+
+
+    public CommonResponse sendSms(String phone, String code, String signName, String template){
+        DefaultProfile profile = DefaultProfile.getProfile(&quot;cn-hangzhou&quot;, prop.getAccessKeyId(), prop.getAccessKeySecret());
+        IAcsClient client = new DefaultAcsClient(profile);
+
+        CommonRequest request = new CommonRequest();
+        request.setSysMethod(MethodType.POST);
+        request.setSysDomain(domain);
+        request.setSysVersion(&quot;2017-05-25&quot;);
+        request.setSysAction(&quot;SendSms&quot;);
+        request.putQueryParameter(&quot;RegionId&quot;, &quot;cn-hangzhou&quot;);
+        request.putQueryParameter(&quot;PhoneNumbers&quot;, phone);
+        request.putQueryParameter(&quot;SignName&quot;, signName);
+        request.putQueryParameter(&quot;TemplateCode&quot;, template);
+        Map&lt;String,String&gt; map = Maps.newHashMapWithExpectedSize(6);
+        map.put(&quot;code&quot;,code);
+        String codeJson = JSONUtil.toJsonStr(map);
+        request.putQueryParameter(&quot;TemplateParam&quot;, codeJson);
+        CommonResponse response = null;
+        try {
+            response = client.getCommonResponse(request);
+            log.info(response.getData());
+        } catch (ServerException e) {
+            e.printStackTrace();
+        } catch (ClientException e) {
+            e.printStackTrace();
+        }
+        return response;
+    }
+}
+
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E4%B8%80%E7%BA%A7%E6%A0%87%E9%A2%98">一级标题</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://xgl6.github.io/post/hello-gridea/">
+              <h3 class="post-title">
+                Hello Gridea
+              </h3>
+            </a>
+          </div>
+        
+
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://xgl6.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
