@@ -209,7 +209,7 @@
                     <article class="post-wrap">
                         <header class="post-header">
                             <h1 class="post-title">
-                                Hello Gridea
+                                实验室管理系统
                             </h1>
                             
                                     <!--zh-->
@@ -218,15 +218,15 @@
                                         <a itemprop="author" rel="author" href="/">
                                             性感六
                                         </a>
-                                        <span class="post-time">&#x65E5;&#x671F;: <a href="#">2018-12-12</a></span>
+                                        <span class="post-time">&#x65E5;&#x671F;: <a href="#">2020-09-27</a></span>
                                         <span class="post-readtime">&#x9605;&#x8BFB;&#x65F6;&#x95F4;:<a
-                                    href="#">1.1
+                                    href="#">8.6
                                     &#x5206;&#x949F;</a></span>
-                                        <span class="post-words">&#x5B57;&#x6570;:<a href="#">301</a></span>
+                                        <span class="post-words">&#x5B57;&#x6570;:<a href="#">1699</a></span>
                                         
                                             <span class="post-category">&#x5206;&#x7C7B;:
                                 
-                                <a href="https://xgl6.github.io/tag/VNODZ1zZJ/">Gridea</a>
+                                <a href="https://xgl6.github.io/tag/XXzPKxnX6/">java</a>
                                 
                             </span>
                                             
@@ -237,39 +237,318 @@
                                     
                         </header>
                         
-                            <img class="post-feature-image" src="https://xgl6.github.io/post-images/hello-gridea.png" alt="">
+                            <img class="post-feature-image" src="https://xgl6.github.io/post-images/Lab.jpg" alt="">
                           
                         <div class="post-content">
-                            <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静<br>
-态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...<br>
-<a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>啦啦啦<img src="https://xgl6.github.io/post-images/1599877570909.jpg" alt="" loading="lazy"></p>
-<p>😘 Enjoy~</p>
+                            <h1 id="1-dollar-前言">1. 💵  前言</h1>
+<p>在七月底的时候，我们开始了项目重构，到九月底第一版要出，这也两个月过去了，想把这其中自己写代码的心得，还有一些遇到的坑，在这里都放出来，在以后遇到同样问题时，能有个快速查找的地方。</p>
+<p>在之后的每个项目中，都会采用这样的形式，所以就按项目来分了。</p>
+<h1 id="2-cloud-架构">2. ☁️ 架构</h1>
+<p>我们采用了 SpringBoot + Mybatis +  通用Mapper + MySQL + Redis</p>
+<p>大致开发流程   编码 --&gt; 提交至Git --&gt; Jenkins构建</p>
+<h1 id="3coffee-java">3.☕️ Java</h1>
+<h2 id="31-balloon-导入导出">3.1 🎈 导入/导出</h2>
+<p>在理需求时老板说要增加导入导出的功能，于是就在想要怎么来实现，由于文件上传是放在本地服务器的，所以备份的时候也要把存放文件的文件夹也要备份。</p>
+<p>两种方案</p>
+<ul class="contains-task-list">
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9092278"><label class="task-list-item-label" for="task-item-9092278"> 把数据库所有的数据查出来，转成Json，然后把Json写入文件，然后把Json文件和存放文件的文件夹打包成zip压缩包返回给前端</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-6069922"><label class="task-list-item-label" for="task-item-6069922"> 直接备份SQL文件，并把文件夹和SQL打包成zip压缩包返回给前端</label></li>
+</ul>
+<p>最终采用第二种，兼容Windows和Linux</p>
+<pre><code class="language-java">import cn.hutool.core.collection.CollUtil;
+import cn.hutool.core.date.DateUtil;
+import cn.hutool.core.io.FileTypeUtil;
+import cn.hutool.core.io.FileUtil;
+import cn.hutool.core.lang.Assert;
+import cn.hutool.core.text.StrBuilder;
+import cn.hutool.core.util.IdUtil;
+import cn.hutool.core.util.RuntimeUtil;
+import cn.hutool.core.util.StrUtil;
+import cn.hutool.core.util.ZipUtil;
+import cn.hutool.system.OsInfo;
+import cn.hutool.system.SystemUtil;
+import cn.hutool.system.UserInfo;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+/**
+ * @author xgl
+ * @create 2020-07-24 18:32
+ */
+@Service
+@Slf4j
+public class BackupServiceImpl implements BackupService {
+
+    /**
+     * 导出SQL
+     *
+     * @return 返回路径
+     */
+    public String exportSql() {
+        //获取系统信息
+        OsInfo osInfo = SystemUtil.getOsInfo();
+        log.info(&quot;系统信息详情:{}&quot;, osInfo);
+        //定义不同系统的执行命令
+        String sh = &quot;&quot;;
+        String option = &quot;&quot;;
+        StrBuilder strBuilder = StrBuilder.create();
+        if (osInfo.isWindows()) {
+            sh = &quot;cmd&quot;;
+            option = &quot;/c&quot;;
+            strBuilder.append(&quot;mysqldump -h127.0.0.1 -uroot -proot ym_lims &gt; &quot;);
+        } else if (osInfo.isLinux()) {
+            log.info(&quot;进入了Linux&quot;);
+            sh = &quot;/bin/sh&quot;;
+            option = &quot;-c&quot;;
+            //由于MySQL 5.7 版本做了限制  需要在my.cnf配置文件里配置密码
+            strBuilder.append(&quot;/usr/bin/mysqldump -h127.0.0.1 -uroot ym_lims &gt; &quot;);
+        } else {
+            throw new RuntimeException(&quot;暂不支持在其他系统导出&quot;);
+        }
+        log.info(&quot;准备生成文件名&quot;);
+        //生成备份文件名
+        //backup-2020-09-14-2090227789.sql
+        //String fileNameFormat = &quot;{}-{}-{}.sql&quot;;
+        //fileNameFormat = StrUtil.format(fileNameFormat, SystemConst.BACKUP_PREFIX, DateUtil.today(), IdUtil.fastSimpleUUID().hashCode());
+        String fileNameFormat = &quot;backup.sql&quot;;
+        log.info(&quot;DataFileName:{}&quot;, fileNameFormat);
+
+        //获取用户临时目录
+        UserInfo userInfo = SystemUtil.getUserInfo();
+        String tempDir = userInfo.getTempDir();
+        //修正路径
+        tempDir = FileUtil.normalize(tempDir);
+        String pathFormat = &quot;{}/lims/sql/{}&quot;;
+        pathFormat = StrUtil.format(pathFormat, tempDir, fileNameFormat);
+        //创建文件
+        FileUtil.touch(pathFormat);
+        strBuilder.append(pathFormat);
+        log.info(&quot;最终生成的文件{}&quot;, pathFormat);
+        String[] command = {sh, option, strBuilder.toString()};
+        log.info(&quot;command:{}&quot;, command);
+        Process exec = RuntimeUtil.exec(command);
+        RuntimeUtil.getResultLines(exec);
+        return pathFormat;
+
+    }
+
+    /**
+     * 数据备份
+     */
+    @Async
+    @Override
+    public void exportData(String[] menus) {
+        /**
+         * 1.导出sql
+         * 2.导出文件
+         * 3.放入一个压缩包里
+         */
+        String sqlPath = exportSql();
+        log.info(&quot;sqlPath:{}&quot;, sqlPath);
+        //导出文件
+        //获取项目上一级路径
+        String parent = ServiceUtils.getProjectPathUpper();
+        log.info(&quot;parent:{}&quot;, parent);
+        //文件存储的路径
+        String filePath = &quot;{}/public/files&quot;;
+        filePath = StrUtil.format(filePath, parent);
+
+        //定义输出目录
+        String outPath = &quot;{}/public/backup/backup-{}-{}.zip&quot;;
+        outPath = StrUtil.format(outPath, parent, DateUtil.today(), IdUtil.fastSimpleUUID().hashCode());
+        ZipUtil.zip(FileUtil.file(outPath), true, FileUtil.file(filePath), FileUtil.file(sqlPath));
+
+        //清理产生的临时文件
+        String delPath = &quot;{}/lims/sql/backup.sql&quot;;
+        String tempDir = SystemUtil.getUserInfo().getTempDir();
+        delPath = StrUtil.format(delPath,tempDir);
+        FileUtil.del(delPath);
+    }
+
+    /**
+     * 列出所有导出的数据
+     *
+     * @return
+     */
+    @Override
+    public List&lt;BackupDTO&gt; listExportedData() {
+
+        String path = ServiceUtils.getProjectPathUpper();
+
+        Path backupParentPath = Paths.get(path + &quot;/public/backup&quot;);
+        if (Files.notExists(backupParentPath)) {
+            return Collections.emptyList();
+        }
+
+        // Build backup dto
+        try (Stream&lt;Path&gt; subPathStream = Files.list(backupParentPath)) {
+            List&lt;BackupDTO&gt; collect = subPathStream
+                    .filter(backupPath -&gt; StringUtils.startsWithIgnoreCase(backupPath.getFileName().toString(), SystemConst.BACKUP_PREFIX))
+                    .map(backupPath -&gt; buildBackupDto(&quot;/backup&quot;, backupPath))
+                    //.sorted(Comparator.comparingLong(BackupDTO::getUpdateTime).reversed())
+                    .collect(Collectors.toList());
+            CollUtil.sort(collect, (o1, o2) -&gt; DateUtil.compare(o2.getUpdateTime(), o1.getUpdateTime()));
+            return collect;
+        } catch (IOException e) {
+            throw new RuntimeException(&quot;Failed to fetch backups&quot;, e);
+        }
+    }
+
+    /**
+     * 构建备份文件
+     *
+     * @param basePath   备份前缀
+     * @param backupPath 文件名
+     * @return
+     */
+    private BackupDTO buildBackupDto(String basePath, Path backupPath) {
+        Assert.notNull(basePath, &quot;Base path must not be null&quot;);
+        Assert.notNull(backupPath, &quot;Backup path must not be null&quot;);
+
+        String backupFileName = backupPath.getFileName().toString();
+        BackupDTO backup = new BackupDTO();
+        try {
+            String backupUri = basePath + &quot;/&quot; + backupFileName;
+            backup.setDownloadLink(backupUri);
+            backup.setFilename(backupFileName);
+            backup.setUpdateTime(DateUtil.date(Files.getLastModifiedTime(backupPath).toMillis()));
+            backup.setFileSize(Files.size(backupPath));
+        } catch (IOException e) {
+            throw new RuntimeException(&quot;Failed to access file &quot; + backupPath, e);
+        }
+
+        return backup;
+    }
+
+    /**
+     * 导入数据
+     *
+     * @param file
+     */
+    @Override
+    public void importData(MultipartFile file) throws IOException {
+        /**
+         * 1.先验证是否是zip压缩包
+         * 2.将zip放到到临时目录
+         * 3.解压到文件名相同的目录中
+         * 4.判断文件的内容是否符合要求
+         * 5.导入sql
+         * 6.复制文件
+         */
+
+        //1.验证是否为zip压缩包
+        String type = FileTypeUtil.getType(file.getInputStream());
+        if (!StrUtil.equals(type, FileConst.ZIP)) {
+            throw new RuntimeException(&quot;只允许传zip压缩包&quot;);
+        }
+
+        //2.将zip放到到临时目录
+        //2.1 生成临时目录
+        // 临时文件样例 /tmp/lims/upload/2020-09-22/UUID/backup.zip
+        String tempPath = &quot;{}/lims/upload/{}/{}/backup.zip&quot;;
+        UserInfo userInfo = SystemUtil.getUserInfo();
+        String tempDir = userInfo.getTempDir();
+        int code = IdUtil.fastSimpleUUID().hashCode();
+        tempPath = StrUtil.format(tempPath, tempDir, DateUtil.today(), code);
+        FileUtil.writeFromStream(file.getInputStream(), tempPath);
+
+        //3.解压到文件名相同的目录中,也就是 /tmp/lims/upload/2020-09-22/UUID/backup/**
+        ZipUtil.unzip(tempPath);
+        //3.1 对tempPath进行处理,去掉文件名后缀
+        String subBefore = StrUtil.subBefore(tempPath, &quot;.zip&quot;, true);
+        //3.2 修正路径
+        subBefore = FileUtil.normalize(subBefore);
+
+        //4.判断文件的内容是否符合要求,也就是一个sql文件,一个files文件夹
+        boolean sqlExist = FileUtil.exist(subBefore + &quot;/backup.sql&quot;);
+        if (!sqlExist) {
+            FileUtil.del(tempDir + &quot;/lims/upload/&quot;);
+            throw new RuntimeException(&quot;上传的zip压缩包里没有sql文件&quot;);
+        }
+        boolean filesExist = FileUtil.exist(subBefore + &quot;/files&quot;);
+        if (!filesExist) {
+            FileUtil.del(tempDir + &quot;/lims/upload/&quot;);
+            throw new RuntimeException(&quot;上传的zip压缩包里没有files文件夹&quot;);
+        }
+        //5.开始导入SQL
+        String sh = &quot;&quot;;
+        String option = &quot;&quot;;
+        StrBuilder strBuilder = StrBuilder.create();
+        OsInfo osInfo = SystemUtil.getOsInfo();
+        if (osInfo.isWindows()) {
+            //5.1 Windows环境下的导入
+            sh = &quot;cmd&quot;;
+            option = &quot;/c&quot;;
+            strBuilder.append(&quot;mysql -h127.0.0.1 -uroot -proot ym_lims &lt; &quot;);
+        } else if (osInfo.isLinux()) {
+            //5.2 Linux环境下的导入
+            sh = &quot;/bin/sh&quot;;
+            option = &quot;-c&quot;;
+            //由于MySQL 5.7 版本做了限制  需要在my.cnf配置文件里配置密码
+            strBuilder.append(&quot;/usr/bin/mysql -h127.0.0.1 -uroot ym_lims &lt; &quot;);
+        } else {
+            throw new RuntimeException(&quot;不支持的系统类型,导入终止&quot;);
+        }
+        strBuilder.append(subBefore);
+        strBuilder.append(&quot;/backup.sql&quot;);
+        String[] command = {sh, option, strBuilder.toString()};
+        log.info(&quot;command:{}&quot;, Arrays.toString(command));
+        Process exec = RuntimeUtil.exec(command);
+        List&lt;String&gt; resultLines = RuntimeUtil.getResultLines(exec);
+        for (String resultLine : resultLines) {
+            log.info(&quot;resultLine:{}&quot;,resultLine);
+        }
+
+        //6.移动文件
+        String filesPath = subBefore + &quot;/files&quot;;
+        String projectPath = ServiceUtils.getProjectPathUpper();
+        projectPath = projectPath + &quot;/public/&quot;;
+        FileUtil.move(FileUtil.file(filesPath),FileUtil.file(projectPath),true);
+
+        //7.删除产生的临时文件
+        String delPath = &quot;{}/lims/upload/{}/{}/&quot;;
+        delPath = StrUtil.format(delPath,tempDir,DateUtil.today(),code);
+        FileUtil.del(delPath);
+
+
+    }
+
+    /**
+     * 删除文件
+     * @param filename
+     */
+    @Override
+    public void deleteExportedData(String filename) {
+        String projectPath = ServiceUtils.getProjectPathUpper();
+        projectPath = projectPath + &quot;/public/backup/&quot; + filename;
+        FileUtil.del(projectPath);
+    }
+}
+
+</code></pre>
 
                         </div>
                         
                             <div class="post-toc">
                                 <ul class="markdownIt-TOC">
-<li>
+<li><a href="#1-dollar-%E5%89%8D%E8%A8%80">1. :dollar:  前言</a></li>
+<li><a href="#2-cloud-%E6%9E%B6%E6%9E%84">2. :cloud: 架构</a></li>
+<li><a href="#3coffee-java">3.:coffee: Java</a>
 <ul>
-<li><a href="#%E7%89%B9%E6%80%A7">特性👇</a></li>
+<li><a href="#31-balloon-%E5%AF%BC%E5%85%A5%E5%AF%BC%E5%87%BA">3.1 :balloon: 导入/导出</a></li>
 </ul>
 </li>
 </ul>
@@ -282,9 +561,9 @@
                                                                     <span style="margin-right:15px">
                         <i class="post-share"></i>
                         <span>&#x5206;&#x4EAB;:</span>
-                                                                    <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://xgl6.github.io/post/hello-gridea/"><i class="fa fa-qrcode"></i></a>
-                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://xgl6.github.io/post/hello-gridea/&sharesource=qzone&title=Hello Gridea&pics=https://xgl6.github.io/images/avatar.png?v=1601345024178&summary="><i class="fa fa-qq"></i></a>
-                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://xgl6.github.io/post/hello-gridea/&sharesource=weibo&title=Hello Gridea + " - " + &pic="https://xgl6.github.io/images/avatar.png?v=1601345024178 "><i class="fa fa-weibo "></i></a>
+                                                                    <a title="QR 码" target="_blank" href="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://xgl6.github.io/post/Lab/"><i class="fa fa-qrcode"></i></a>
+                                                                    <a title="QQ" target="_blank" href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://xgl6.github.io/post/Lab/&sharesource=qzone&title=实验室管理系统&pics=https://xgl6.github.io/images/avatar.png?v=1601345024178&summary="><i class="fa fa-qq"></i></a>
+                                                                    <a title="新浪微博" target="_blank" href="https://service.weibo.com/share/share.php?url=https://xgl6.github.io/post/Lab/&sharesource=weibo&title=实验室管理系统 + " - " + &pic="https://xgl6.github.io/images/avatar.png?v=1601345024178 "><i class="fa fa-weibo "></i></a>
 
                                                                     </span>
                                                                     
@@ -295,8 +574,8 @@
                                                                                     <span class="tag ">
                         
                         
-                        <a href="https://xgl6.github.io/tag/VNODZ1zZJ/">#
-                    Gridea
+                        <a href="https://xgl6.github.io/tag/XXzPKxnX6/">#
+                    java
                         </a>
                         
                             
@@ -314,11 +593,11 @@
                                                                                 <!---->
                                                                                 <section class="post-nav">
                                                                                     
-                                                                                        <a class="prev" rel="prev" href="https://xgl6.github.io/post/Lab/">
-                                                                                            实验室管理系统
-                                                                                        </a>
-                                                                                        
                                                                                             
+                                                                                                <a class="next" rel="next" href="https://xgl6.github.io/post/hello-gridea/">
+                                                                                                    Hello Gridea
+                                                                                                </a>
+                                                                                                
                                                                                 </section>
                     </article>
                 </div>
